@@ -110,11 +110,9 @@ export default function Navbar() {
 
             <div className='py-5 '>
                 <div className='flex justify-between items-center mx-auto'>
-                    {/* Logo */}
                     <div className='flex items-center gap-12'>
                         <img src={logo} alt="Logo" className='h-10 md:h-[3.1rem]' />
 
-                        {/* Navigation Links - Hidden on mobile */}
                         <div className='hidden lg:flex items-center gap-8'>
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={homevector} className="w-5 h-5" alt="Home" />
@@ -143,9 +141,7 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    {/* Right Side Icons */}
                     <div className='flex items-center gap-3 md:gap-4'>
-                        {/* Desktop Icons */}
                         <div className='hidden md:flex items-center gap-4'>
                             <img src={shoppingbag} className="w-6 h-6 cursor-pointer" alt="Shopping Bag" />
                             <img src={notification} className="w-6 h-6 cursor-pointer" alt="Notifications" />
@@ -162,7 +158,6 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* Mobile Menu Button */}
                         <button
                             onClick={toggleSidebar}
                             className='lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors'
@@ -174,7 +169,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Overlay */}
             {isSidebarOpen && (
                 <div
                     className='fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden'
@@ -182,7 +176,6 @@ export default function Navbar() {
                 ></div>
             )}
 
-            {/* Sidebar */}
             <div
                 className={`fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
@@ -199,7 +192,6 @@ export default function Navbar() {
                         </button>
                     </div>
 
-                    {/* Sidebar Navigation */}
                     <div className='flex flex-col gap-6'>
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={homevector} className="w-5 h-5" alt="Home" />
@@ -228,7 +220,6 @@ export default function Navbar() {
 
                         <hr className='my-4' />
 
-                        {/* Sidebar Icons */}
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={shoppingbag} className="w-6 h-6" alt="Shopping Bag" />
                             <p className='text-gray-700 m-0 navbar-text'>Shopping Bag</p>
