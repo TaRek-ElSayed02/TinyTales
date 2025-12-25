@@ -71,7 +71,7 @@ export default function Reviews() {
   };
   return (
     <div className="md:p-8 p-3 mt-5 bg-white rounded-xl">
-      <h3 className="text-[16px] font-bold mb-6">
+      <h3 className="text-[16px] md:text-[24px] font-semibold mb-6">
         <span className="underline decoration-[#BE968E] underline-offset-8 decoration-4">
           Rat
         </span>
