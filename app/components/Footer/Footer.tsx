@@ -15,7 +15,7 @@ export default function Footer() {
     const loc = "/loc.png"
 
     return (
-        <div className="relative w-full h-[669px] md:h-[323px] overflow-hidden">
+        <div className="relative w-full h-[auti] md:h-[323px] overflow-hidden ">
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${kid})` }}
