@@ -126,7 +126,7 @@ export default function Footer() {
                                     <input
                                         type="email"
                                         placeholder="Email address"
-                                        className="flex-1 px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
+                                        className="w-[70%] px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
                                     />
                                     <button className="px-5 py-2 bg-rose-300 hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
                                         Send
