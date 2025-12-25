@@ -1,0 +1,50 @@
+{
+  "common": {
+    "welcome": "Welcome Back",
+    "signInToAccount": "Sign in to your account",
+    "email": "Email Address",
+    "password": "Password",
+    "show": "Show",
+    "hide": "Hide",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "switchToArabic": "العربية",
+    "switchToEnglish": "English"
+  },
+  "register": {
+    "createAccount": "Create Account",
+    "joinStart": "Join us and start your journey",
+    "fullName": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "countryCode": "Country Code",
+    "phoneNumber": "Phone Number",
+    "creatingAccount": "Creating account..."
+  },
+  "validation": {
+    "emailRequired": "Email is required",
+    "invalidEmail": "Invalid email address",
+    "passwordRequired": "Password is required"
+  },
+  "registerValidation": {
+    "fullNameMin": "Full name must be at least 3 characters",
+    "fullNamePattern": "Full name must contain only letters without symbols",
+    "fullNameRequired": "Full name is required",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordLower": "Password must contain at least one lowercase letter",
+    "passwordUpper": "Password must contain at least one uppercase letter",
+    "passwordNumber": "Password must contain at least one number",
+    "passwordSpecial": "Password must contain at least one special character",
+    "passwordConfirmMismatch": "Passwords do not match",
+    "passwordConfirmationRequired": "Password confirmation is required",
+    "countryCodePattern": "Country code must start with +",
+    "countryCodeRequired": "Country code is required",
+    "phonePattern": "Phone number must contain only digits",
+    "phoneRequired": "Phone number is required"
+  },
+  "errors": {
+    "loginFailed": "Login failed. Please check your credentials.",
+    "genericError": "An error occurred. Please try again."
+  }
+}

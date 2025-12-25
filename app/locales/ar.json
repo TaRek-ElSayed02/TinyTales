@@ -1,0 +1,50 @@
+{
+  "common": {
+    "welcome": "مرحباً بعودتك",
+    "signInToAccount": "سجل الدخول إلى حسابك",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "show": "إظهار",
+    "hide": "إخفاء",
+    "signIn": "تسجيل الدخول",
+    "signingIn": "جاري تسجيل الدخول...",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "signUp": "سجل الآن",
+    "switchToArabic": "العربية",
+    "switchToEnglish": "English"
+  },
+  "register": {
+    "createAccount": "إنشاء حساب",
+    "joinStart": "انضم إلينا وابدأ رحلتك",
+    "fullName": "الاسم الكامل",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "countryCode": "رمز الدولة",
+    "phoneNumber": "رقم الهاتف",
+    "creatingAccount": "جاري إنشاء الحساب..."
+  },
+  "validation": {
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+    "passwordRequired": "كلمة المرور مطلوبة"
+  },
+  "registerValidation": {
+    "fullNameMin": "الاسم يجب أن يكون 3 أحرف على الأقل",
+    "fullNamePattern": "الاسم يجب أن يحتوي حروف فقط بدون رموز",
+    "fullNameRequired": "الاسم الكامل مطلوب",
+    "passwordMin": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+    "passwordLower": "كلمة المرور يجب أن تحتوي على حرف صغير واحد على الأقل",
+    "passwordUpper": "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل",
+    "passwordNumber": "كلمة المرور يجب أن تحتوي على رقم واحد على الأقل",
+    "passwordSpecial": "كلمة المرور يجب أن تحتوي على رمز خاص واحد على الأقل",
+    "passwordConfirmMismatch": "كلمات المرور غير متطابقة",
+    "passwordConfirmationRequired": "تأكيد كلمة المرور مطلوب",
+    "countryCodePattern": "رمز الدولة يجب أن يبدأ بـ +",
+    "countryCodeRequired": "رمز الدولة مطلوب",
+    "phonePattern": "رقم الهاتف يجب أن يحتوي أرقام فقط",
+    "phoneRequired": "رقم الهاتف مطلوب"
+  },
+  "errors": {
+    "loginFailed": "فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد.",
+    "genericError": "حدث خطأ. يرجى المحاولة مرة أخرى."
+  }
+}

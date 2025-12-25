@@ -1,10 +1,26 @@
+
 import * as Yup from "yup";
 
-export const loginSchema = Yup.object({
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
+export const getLoginSchema = (locale: 'en' | 'ar') => {
+  const translations = {
+    en: {
+      emailRequired: "Email is required",
+      invalidEmail: "Invalid email address",
+      passwordRequired: "Password is required"
+    },
+    ar: {
+      emailRequired: "البريد الإلكتروني مطلوب",
+      invalidEmail: "عنوان البريد الإلكتروني غير صالح",
+      passwordRequired: "كلمة المرور مطلوبة"
+    }
+  };
 
-  password: Yup.string()
-    .required("Password is required"),
-});
+  return Yup.object({
+    email: Yup.string()
+      .email(translations[locale].invalidEmail)
+      .required(translations[locale].emailRequired),
+
+    password: Yup.string()
+      .required(translations[locale].passwordRequired),
+  });
+};

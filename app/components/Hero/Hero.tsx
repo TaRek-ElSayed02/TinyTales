@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 
 export default function ProductDetails() {
+    const arrowdown = "/arrowdown.png";
+
     const [quantity, setQuantity] = useState(1);
     const [selectedColor, setSelectedColor] = useState('blue');
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -157,7 +159,7 @@ export default function ProductDetails() {
                                     Type
                                 </label>
                                 <div className="absolute right-3 md:right-80 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                                    ▼
+                                    <img src={arrowdown} alt="" />
                                 </div>
                             </div>
                         </div>
@@ -175,7 +177,7 @@ export default function ProductDetails() {
                                     Size
                                 </label>
                                 <div className="absolute right-3 md:right-80 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                                    ▼
+                                    <img src={arrowdown} alt="" />
                                 </div>
                             </div>
                         </div>

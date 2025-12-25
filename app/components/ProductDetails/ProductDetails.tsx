@@ -7,7 +7,9 @@ declare module 'react' {
 }
 
 export default function ProductDetails() {
+
     const background = "/background.jpeg";
+    const verticalmobile = "/3dverticalmobile.png";
     
     return (
         <>
@@ -29,26 +31,48 @@ export default function ProductDetails() {
 
                 <div className='absolute inset-0 flex items-center justify-center'>
                     <div className='relative text-center px-4'>
-                        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0'>
+                        {/* طبقة التظليل الكبيرة - تظهر Product Details على الكمبيوتر و T-shirt على الموبايل */}
+                        <div className='absolute w-[628px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0'>
                             <h2 
-                                className='font-bold text-transparent whitespace-nowrap' 
+                                className='font-bold text-transparent whitespace-nowrap hidden md:block' 
                                 style={{
                                     fontSize: '80px',
-                                    lineHeight: '120px',
+                                    lineHeight: '120px',                                    
                                     WebkitTextStroke: '1px rgba(0, 0, 0, 0.05)',
                                     textStroke: '1px rgba(0, 0, 0, 0.05)'
                                 }}>
                                 Product Details
                             </h2>
+                            <h2 
+                                className='font-bold text-transparent whitespace-nowrap block md:hidden' 
+                                style={{
+                                    fontSize: '35px',
+                                    lineHeight: '120px',                                    
+                                    WebkitTextStroke: '1px rgba(0, 0, 0, 0.05)',
+                                    textStroke: '1px rgba(0, 0, 0, 0.05)'
+                                }}>
+                                T-shirt
+                            </h2>
                         </div>
                         
+                        {/* النص الرئيسي - تظهر Product Details على الكمبيوتر و T-shirt على الموبايل */}
                         <h1 
-                            className='font-semibold text-[#020202] relative z-10'
+                            className='font-semibold text-[#020202] relative z-10 hidden md:block'
                             style={{
                                 fontSize: '32px',
+                                width:'247px',
                                 lineHeight: '48px'
                             }}>
                             Product Details
+                        </h1>
+                        <h1 
+                            className='font-semibold text-[#020202] relative z-10 block md:hidden'
+                            style={{
+                                fontSize: '20px',
+                                width:'71px',
+                                lineHeight: '30px'
+                            }}>
+                            T-shirt
                         </h1>
                     </div>
                 </div>

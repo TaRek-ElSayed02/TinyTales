@@ -44,3 +44,19 @@ body{
   background: linear-gradient(90deg, #22c55e, #16a34a);
   border-radius: 10px;
 }
+
+
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+}
+
+[dir="rtl"] svg {
+  transform: none;
+}
+
+.language-switcher {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

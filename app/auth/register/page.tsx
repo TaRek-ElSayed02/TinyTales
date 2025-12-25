@@ -3,12 +3,15 @@ import { useFormik } from "formik";
 import { register } from "../../services/authService";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { registerSchema } from "../../utils/registerSchema";
+import { getRegisterSchema } from "../../utils/registerSchema";
 import Link from "next/link";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { t } from "../../i18n";
 export default function Register() {
     const router = useRouter();
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const { locale, toggleLocale } = useLanguage();
 
     const formik = useFormik({
         initialValues: {
@@ -19,7 +22,7 @@ export default function Register() {
             mobile: "",
             mobile_country_code: "+971",
         },
-        validationSchema: registerSchema,
+        validationSchema: getRegisterSchema(locale),
         onSubmit: async (values) => {
             try {
                 setError("");
@@ -56,10 +59,20 @@ export default function Register() {
                 onSubmit={formik.handleSubmit}
                 className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8"
             >
+                <div className="flex justify-end mb-4">
+                    <button
+                        onClick={toggleLocale}
+                        type="button"
+                        className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm font-medium transition-colors"
+                    >
+                        {locale === 'en' ? t('common.switchToArabic', locale) : t('common.switchToEnglish', locale)}
+                    </button>
+                </div>
+
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-800">Create Account</h2>
+                    <h2 className="text-3xl font-bold text-gray-800">{t('register.createAccount', locale)}</h2>
                     <p className="text-sm text-gray-500 mt-2">
-                        Join us and start your journey
+                        {t('register.joinStart', locale)}
                     </p>
                 </div>
 
@@ -73,11 +86,12 @@ export default function Register() {
                     <div>
                         <input
                             name="fullName"
-                            placeholder="Full Name"
+                            placeholder={t('register.fullName', locale)}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.fullName}
                             className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
                         />
                         {formik.touched.fullName && formik.errors.fullName && (
                             <p className="text-red-500 text-xs mt-1">
@@ -90,11 +104,12 @@ export default function Register() {
                         <input
                             type="email"
                             name="email"
-                            placeholder="Email Address"
+                            placeholder={t('common.email', locale)}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.email}
                             className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
                         />
                         {formik.touched.email && formik.errors.email && (
                             <p className="text-red-500 text-xs mt-1">
@@ -107,11 +122,12 @@ export default function Register() {
                         <input
                             type="password"
                             name="password"
-                            placeholder="Password"
+                            placeholder={t('common.password', locale)}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.password}
                             className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
                         />
                         {formik.touched.password && formik.errors.password && (
                             <p className="text-red-500 text-xs mt-1">
@@ -124,11 +140,12 @@ export default function Register() {
                         <input
                             type="password"
                             name="password_confirmation"
-                            placeholder="Confirm Password"
+                            placeholder={t('register.confirmPassword', locale)}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                             value={formik.values.password_confirmation}
                             className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
                         />
                         {formik.touched.password_confirmation &&
                             formik.errors.password_confirmation && (
@@ -142,11 +159,12 @@ export default function Register() {
                         <div className="w-1/3">
                             <input
                                 name="mobile_country_code"
-                                placeholder="+20"
+                                placeholder={t('register.countryCode', locale)}
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                                 value={formik.values.mobile_country_code}
                                 className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                dir={locale === 'ar' ? 'rtl' : 'ltr'}
                             />
                             {formik.touched.mobile_country_code &&
                                 formik.errors.mobile_country_code && (
@@ -159,11 +177,12 @@ export default function Register() {
                         <div className="w-2/3">
                             <input
                                 name="mobile"
-                                placeholder="Phone Number"
+                                placeholder={t('register.phoneNumber', locale)}
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                                 value={formik.values.mobile}
                                 className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                dir={locale === 'ar' ? 'rtl' : 'ltr'}
                             />
                             {formik.touched.mobile && formik.errors.mobile && (
                                 <p className="text-red-500 text-xs mt-1">
@@ -180,16 +199,16 @@ export default function Register() {
                     className="w-full mt-8 h-12 rounded-lg bg-blue-600 text-white font-semibold
                  hover:bg-blue-700 transition disabled:opacity-60"
                 >
-                    {isLoading ? "Creating account..." : "Sign Up"}
+                    {isLoading ? t('register.creatingAccount', locale) : t('common.signUp', locale)}
                 </button>
 
                 <p className="text-center text-sm mt-6 text-gray-600">
-                    Already have an account?{" "}
+                    {t('common.dontHaveAccount', locale)}{" "}
                     <Link
                         href="/auth/login"
                         className="text-blue-600 font-medium hover:underline"
                     >
-                        Login
+                        {t('common.signIn', locale)}
                     </Link>
                 </p>
             </form>
