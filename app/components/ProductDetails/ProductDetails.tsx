@@ -22,7 +22,6 @@ export default function ProductDetails() {
         }
       `}</style>
 
-            {/* نسخة الكمبيوتر - الخلفية الأساسية */}
             <div className='relative w-full h-[193px] overflow-hidden hidden md:block'>
                 <img
                     src={background}
@@ -32,7 +31,6 @@ export default function ProductDetails() {
 
                 <div className='absolute inset-0 flex items-center justify-center'>
                     <div className='relative text-center px-4'>
-                        {/* طبقة التظليل الكبيرة */}
                         <div className='absolute w-[628px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0'>
                             <h2
                                 className='font-bold text-transparent whitespace-nowrap'
@@ -47,7 +45,6 @@ export default function ProductDetails() {
                             </h2>
                         </div>
 
-                        {/* النص الرئيسي */}
                         <h1
                             className='font-semibold text-[#020202] relative z-10'
                             style={{
@@ -62,7 +59,6 @@ export default function ProductDetails() {
                 </div>
             </div>
 
-            {/* نسخة الموبايل - مع الخلفية verticalmobile */}
             <div className='relative w-full h-[193px] overflow-hidden block md:hidden'>
                 <img
                     src={verticalmobile}
@@ -72,7 +68,6 @@ export default function ProductDetails() {
 
                 <div className='absolute inset-0 flex items-center justify-center'>
                     <div className='relative text-center px-4'>
-                        {/* طبقة التظليل الكبيرة للموبايل */}
                         <div className='absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0'>
                             <h2
                                 className='font-bold text-transparent whitespace-nowrap'
@@ -87,7 +82,6 @@ export default function ProductDetails() {
                             </h2>
                         </div>
 
-                        {/* النص الرئيسي للموبايل */}
                         <h1
                             className='font-semibold text-[#020202] relative z-10'
                             style={{
