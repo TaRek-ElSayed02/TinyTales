@@ -4,6 +4,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Hero from "./components/Hero/Hero";
 import Reviews from "./components/Reviews/Reviews";
 import SimilarItems from "./components/SimilarItems/SimilarItems";
+import Footer from "./components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <Reviews />
         <SimilarItems />
       </div>
-
+      <Footer />
     </div>
 
   );
