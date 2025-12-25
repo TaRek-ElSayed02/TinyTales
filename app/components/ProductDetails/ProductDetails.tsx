@@ -24,6 +24,7 @@ export default function ProductDetails() {
 
             <div className='relative w-full h-[193px] overflow-hidden hidden md:block'>
                 <img
+                   
                     src={background}
                     alt="Background for Product Details"
                     className="absolute inset-0 w-full h-full object-cover"
