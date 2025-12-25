@@ -1,160 +1,3 @@
-// import React from 'react'
-
-// export default function Footer() {
-//   const kid = "/kids-photography.png"
-//   const lightlogo = "/lightlogo.png"
-//   const linkedin = "/linkedin.png"
-//   const face = "/face.png"
-//   const telegram = "/telegram.png"
-//   const x = "/x.png"
-//   const insta = "/insta.png"
-
-//   return (
-//     <div className="relative w-full h-[669px] md:h-[323px]">
-//       {/* Background Image with Dark Overlay */}
-//       <div 
-//         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-//         style={{ backgroundImage: `url(${kid})` }}
-//       >
-//         <div className="absolute inset-0 bg-black/70"></div>
-//       </div>
-
-//       {/* Content */}
-//       <div className="relative z-10 text-white">
-//         {/* Mobile Layout */}
-//         <div className="md:hidden px-6 py-10">
-//           {/* Logo and Description */}
-//           <div className="mb-8">
-//             <img src={lightlogo} alt="TinyTales" className="w-20 mb-4" />
-//             <p className="text-sm text-gray-300 leading-relaxed">
-//               Lorem ipsum dolor sit amet, consectuetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore sit amet, consectuetur adipiscing elit, sed diam nonummy
-//             </p>
-//           </div>
-
-//           {/* Contact Us Section */}
-//           <div className="mb-8">
-//             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-//             <div className="space-y-3">
-//               <div className="flex items-center gap-3">
-//                 <span className="text-lg">📞</span>
-//                 <span className="text-sm">+87 01928491</span>
-//               </div>
-//               <div className="flex items-center gap-3">
-//                 <span className="text-lg">✉️</span>
-//                 <span className="text-sm">Named@gmail.com</span>
-//               </div>
-//               <div className="flex items-center gap-3">
-//                 <span className="text-lg">📍</span>
-//                 <span className="text-sm">381, cairo, egypt</span>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* Let Us Help Section */}
-//           <div className="mb-8">
-//             <h3 className="text-xl font-semibold mb-4">Let Us Help</h3>
-//             <ul className="space-y-2 text-sm text-gray-300">
-//               <li>My Account</li>
-//               <li>FAQs</li>
-//               <li>Contact & Support</li>
-//               <li>Categories</li>
-//               <li>All Products</li>
-//             </ul>
-//           </div>
-
-//           {/* Send Email Section */}
-//           <div className="mb-8">
-//             <h3 className="text-xl font-semibold mb-4">Send Email</h3>
-//             <div className="flex gap-2">
-//               <input
-//                 type="email"
-//                 placeholder="Email address"
-//                 className="flex-1 px-4 py-3 rounded-lg bg-white text-gray-800 text-sm outline-none"
-//               />
-//               <button className="px-6 py-3 bg-rose-300 hover:bg-rose-400 rounded-lg text-white font-medium transition-colors">
-//                 Send
-//               </button>
-//             </div>
-//           </div>
-
-//           {/* Follow Us Section */}
-//           <div>
-//             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-//             <div className="flex gap-4">
-//               <img src={face} alt="Facebook" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//               <img src={x} alt="Twitter" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//               <img src={insta} alt="Instagram" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//               <img src={linkedin} alt="LinkedIn" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//               <span className="text-2xl cursor-pointer hover:opacity-80 transition-opacity">💬</span>
-//               <img src={telegram} alt="Telegram" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Desktop Layout */}
-//         <div className="hidden md:flex px-12 lg:px-20 py-16">
-//           <div className="w-full grid grid-cols-4 gap-12">
-//             {/* Column 1: Logo and Description */}
-//             <div>
-//               <img src={lightlogo} alt="TinyTales" className="w-24 mb-6" />
-//               <p className="text-sm text-gray-300 leading-relaxed">
-//                 Ipsam in eos qui consequatur ab cum inaudilas.Soluta dolor quae ipsam in eos qui consequatur ab .Soluta dolor quae ipsam in eos quconsequatur ab cum maxime.Soluta dolor quae
-//               </p>
-//             </div>
-
-//             {/* Column 2: Let Us Help */}
-//             <div>
-//               <h3 className="text-xl font-semibold mb-6">Let Us Help</h3>
-//               <ul className="space-y-3 text-sm text-gray-300">
-//                 <li className="cursor-pointer hover:text-white transition-colors">My Account</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">FAQs</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">Categories</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">All Products</li>
-//               </ul>
-//             </div>
-
-//             {/* Column 3: Policies */}
-//             <div>
-//               <h3 className="text-xl font-semibold mb-6">Policies</h3>
-//               <ul className="space-y-3 text-sm text-gray-300">
-//                 <li className="cursor-pointer hover:text-white transition-colors">Refund Policy</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">About Us</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">Cancellation Policy</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">Terms and Conditions</li>
-//                 <li className="cursor-pointer hover:text-white transition-colors">Privacy Policy</li>
-//               </ul>
-//             </div>
-
-//             {/* Column 4: Send Email and Follow Us */}
-//             <div>
-//               <h3 className="text-xl font-semibold mb-6">Send Email</h3>
-//               <div className="flex gap-2 mb-8">
-//                 <input
-//                   type="email"
-//                   placeholder="Email address"
-//                   className="flex-1 px-4 py-3 rounded-lg bg-white text-gray-800 text-sm outline-none"
-//                 />
-//                 <button className="px-6 py-3 bg-rose-300 hover:bg-rose-400 rounded-lg text-white font-medium transition-colors">
-//                   Send
-//                 </button>
-//               </div>
-
-//               <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-//               <div className="flex gap-4">
-//                 <img src={face} alt="Facebook" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//                 <img src={x} alt="Twitter" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//                 <img src={insta} alt="Instagram" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//                 <img src={linkedin} alt="LinkedIn" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//                 <span className="text-2xl cursor-pointer hover:opacity-80 transition-opacity">💬</span>
-//                 <img src={telegram} alt="Telegram" className="w-8 h-8 cursor-pointer hover:opacity-80 transition-opacity" />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
 
 import React from 'react'
 
@@ -173,7 +16,6 @@ export default function Footer() {
 
     return (
         <div className="relative w-full h-[669px] md:h-[323px] overflow-hidden">
-            {/* Background Image with Dark Overlay */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${kid})` }}
@@ -181,12 +23,9 @@ export default function Footer() {
                 <div className="absolute inset-0 bg-black/72"></div>
             </div>
 
-            {/* Content */}
             <div className="relative z-10 text-white h-full">
                 <div className="max-w-full md:max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 h-full">
-                    {/* Mobile Layout */}
                     <div className="md:hidden py-8 h-full overflow-y-auto">
-                        {/* Logo and Description */}
                         <div className="mb-6">
                             <img src={lightlogo} alt="TinyTales" className="w-16 mb-3" />
                             <p className="text-xs text-gray-300 leading-relaxed">
@@ -194,7 +33,6 @@ export default function Footer() {
                             </p>
                         </div>
 
-                        {/* Contact Us Section */}
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
                             <div className="space-y-2">
@@ -213,7 +51,6 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* Let Us Help Section */}
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold mb-3">Let Us Help</h3>
                             <ul className="space-y-1.5 text-xs text-gray-300">
@@ -225,7 +62,6 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* Send Email Section */}
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold mb-3">Send Email</h3>
                             <div className="flex gap-2">
@@ -240,7 +76,6 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        {/* Follow Us Section */}
                         <div>
                             <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
                             <div className="flex gap-3">
@@ -255,10 +90,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Desktop Layout */}
                     <div className="hidden md:flex py-8 h-full items-center">
                         <div className="w-full grid grid-cols-4 gap-8">
-                            {/* Column 1: Logo and Description */}
                             <div>
                                 <img src={lightlogo} alt="TinyTales" className="w-20 mb-4" />
                                 <p className="text-[14px] text-gray-300 leading-relaxed">
@@ -266,7 +99,6 @@ export default function Footer() {
                                 </p>
                             </div>
 
-                            {/* Column 2: Let Us Help */}
                             <div>
                                 <h3 className="text-[24px] font-semibold mb-4">Let Us Help</h3>
                                 <ul className="space-y-2 text-[16px] text-gray-300">
@@ -277,7 +109,6 @@ export default function Footer() {
                                 </ul>
                             </div>
 
-                            {/* Column 3: Policies */}
                             <div>
                                 <h3 className="text-[24px] font-semibold mb-4">Policies</h3>
                                 <ul className="space-y-2 text-[16px] text-gray-300  ">
@@ -289,7 +120,6 @@ export default function Footer() {
                                 </ul>
                             </div>
 
-                            {/* Column 4: Send Email and Follow Us */}
                             <div>
                                 <h3 className="text-lg font-semibold mb-4">Send Email</h3>
                                 <div className="flex gap-2 mb-6">

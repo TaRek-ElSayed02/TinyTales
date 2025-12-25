@@ -97,7 +97,7 @@ export default function SimilarItems() {
     setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
   };
 
-  const toggleFavorite = (id) => {
+  const toggleFavorite = (id:number) => {
     setFavorites(prev => {
       const newFavorites = new Set(prev);
       if (newFavorites.has(id)) {
@@ -109,7 +109,7 @@ export default function SimilarItems() {
     });
   };
 
-  const toggleCart = (id) => {
+  const toggleCart = (id:number) => {
     setCart(prev => {
       const newCart = new Set(prev);
       if (newCart.has(id)) {
@@ -121,7 +121,7 @@ export default function SimilarItems() {
     });
   };
 
-  const calculateDiscount = (price, oldPrice) => {
+  const calculateDiscount = (price:number, oldPrice:number) => {
     if (!oldPrice) return 0;
     return Math.round(((oldPrice - price) / oldPrice) * 100);
   };
