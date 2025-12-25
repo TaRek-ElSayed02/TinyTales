@@ -2,9 +2,9 @@ import * as Yup from "yup";
 
 export const loginSchema = Yup.object({
   email: Yup.string()
-    .email("البريد الإلكتروني غير صالح")
-    .required("البريد الإلكتروني مطلوب"),
+    .email("Invalid email address")
+    .required("Email is required"),
 
   password: Yup.string()
-    .required("كلمة المرور مطلوبة"),
+    .required("Password is required"),
 });

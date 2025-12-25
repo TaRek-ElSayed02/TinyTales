@@ -64,13 +64,13 @@ export default function Footer() {
 
                         <div className="mb-6">
                             <h3 className="text-lg font-semibold mb-3">Send Email</h3>
-                            <div className="flex gap-2 bg-black rounded-lg">
+                            <div className="flex gap-2 mb-6 bg-white rounded-lg p-2">
                                 <input
                                     type="email"
                                     placeholder="Email address"
-                                    className="flex-1 px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
+                                    className="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
                                 />
-                                <button className="px-5 py-2 bg-rose-300 hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
+                                <button className=" px-9 py-3 bg-[#BE968E] hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
                                     Send
                                 </button>
                             </div>
@@ -84,7 +84,7 @@ export default function Footer() {
                                 <img src={insta} alt="Instagram" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                 <img src={linkedin} alt="LinkedIn" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                 <img src={whatsapp} alt="whatsapp" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
-                                
+
                                 <img src={telegram} alt="Telegram" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                             </div>
                         </div>
@@ -140,7 +140,7 @@ export default function Footer() {
                                     <img src={insta} alt="Instagram" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                     <img src={linkedin} alt="LinkedIn" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                     <img src={whatsapp} alt="WhatsApp" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
-                                    
+
                                     <img src={telegram} alt="Telegram" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                 </div>
                             </div>

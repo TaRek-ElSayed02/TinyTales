@@ -2,34 +2,34 @@ import * as Yup from "yup";
 
 export const registerSchema = Yup.object({
   fullName: Yup.string()
-    .min(3, "الاسم يجب أن يكون 3 أحرف على الأقل")
+    .min(3, "Full name must be at least 3 characters")
     .matches(
       /^[\u0600-\u06FFa-zA-Z\s]+$/,
-      "الاسم يجب أن يحتوي على حروف فقط بدون رموز"
+      "Full name must contain only letters without symbols"
     )
-    .required("الاسم بالكامل مطلوب"),
+    .required("Full name is required"),
 
   email: Yup.string()
-    .email("البريد الإلكتروني غير صالح")
-    .required("البريد الإلكتروني مطلوب"),
+    .email("Invalid email address")
+    .required("Email is required"),
 
   password: Yup.string()
-    .min(8, "كلمة المرور يجب أن تكون 8 أحرف على الأقل")
-    .matches(/[a-z]/, "كلمة المرور يجب أن تحتوي على حرف صغير")
-    .matches(/[A-Z]/, "كلمة المرور يجب أن تحتوي على حرف كبير")
-    .matches(/[0-9]/, "كلمة المرور يجب أن تحتوي على رقم")
-    .matches(/[@$!%*?&#]/, "كلمة المرور يجب أن تحتوي على رمز خاص")
-    .required("كلمة المرور مطلوبة"),
+    .min(8, "Password must be at least 8 characters")
+    .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+    .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .matches(/[0-9]/, "Password must contain at least one number")
+    .matches(/[@$!%*?&#]/, "Password must contain at least one special character")
+    .required("Password is required"),
 
   password_confirmation: Yup.string()
-    .oneOf([Yup.ref("password")], "كلمتا المرور غير متطابقتين")
-    .required("تأكيد كلمة المرور مطلوب"),
+    .oneOf([Yup.ref("password")], "Passwords do not match")
+    .required("Password confirmation is required"),
 
   mobile_country_code: Yup.string()
-    .matches(/^\+\d+$/, "كود الدولة يجب أن يبدأ بعلامة +")
-    .required("كود الدولة مطلوب"),
+    .matches(/^\+\d+$/, "Country code must start with +")
+    .required("Country code is required"),
 
   mobile: Yup.string()
-    .matches(/^\d+$/, "رقم الهاتف يجب أن يحتوي على أرقام فقط")
-    .required("رقم الهاتف مطلوب"),
+    .matches(/^\d+$/, "Phone number must contain only digits")
+    .required("Phone number is required"),
 });
