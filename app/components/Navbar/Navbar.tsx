@@ -114,7 +114,6 @@ export default function Navbar() {
                     }`}
             >
                 <div className='p-6'>
-                    {/* Close Button */}
                     <div className='flex justify-between items-center mb-8'>
                         <img src={logo} alt="Logo" className='h-10' />
                         <button

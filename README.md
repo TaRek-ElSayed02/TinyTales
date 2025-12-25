@@ -104,20 +104,160 @@ Server-side middleware checks
 Automatic redirect to login for unauthenticated users
 Protected dashboard route
 
-## Script Breakdown
-npm run dev - Development Server
-Starts Next.js development server with hot reload
-Optimized for local development
-Includes error overlays and fast refresh
+## Internationalization (i18n) - Translation System
 
-npm run build - Production Build
-Creates optimized production build
-Generates static files for deployment
-Performs code splitting and optimization
+### Overview
+The application features a complete bilingual (English & Arabic) support system with RTL (Right-to-Left) layout support for Arabic language. The translation system is built using JSON locale files with a custom helper function, providing seamless language switching across all pages without page reload.
 
-npm start - Production Server
-Runs the built application in production mode
-Uses optimized files from next build
+### Technology Used
+- **JSON Locale Files**: `/app/locales/en.json` and `/app/locales/ar.json`
+- **Custom i18n Helper**: `/app/i18n/index.ts` - Handles translation key lookup and fallback
+- **Context API**: `LanguageContext.tsx` - Global language state management with localStorage persistence
+- **Next.js App Router**: Client components with "use client" directive for interactivity
+- **Tailwind CSS**: For responsive and RTL-aware styling
+
+### Key Features
+
+#### 1. **Language Toggle Button**
+- Implemented on all pages: Login, Register, Verify, Dashboard
+- Easy access to switch between English and Arabic
+- Instant UI updates without page reload
+
+#### 2. **RTL Support**
+- Automatic document direction change: `document.dir = 'rtl' | 'ltr'`
+- RTL-aware CSS classes using Tailwind conditionals:
+  - `flex-row-reverse` for reversed layouts
+  - `justify-end` / `justify-start` for RTL alignment
+  - `text-right` / `text-left` for text direction
+  - `left-3` / `right-3` for position adjustments
+- Transform direction inversion for carousels and sliders
+- Arrow/icon rotation with `scaleX(-1)` for RTL
+
+#### 3. **Namespace-Based Organization**
+Translation keys are organized into logical namespaces:
+- `common` - Shared UI elements (Sign In, Sign Up, buttons, language switcher)
+- `register` - Registration page specific text
+- `verify` - Email verification page text
+- `dashboard` - Dashboard page text
+- `navbar` - Navigation bar items
+- `product` - Product details, breadcrumbs, materials, sizes, colors
+- `reviews` - Review section, ratings, comments
+- `similar` - Similar items carousel
+- `footer` - Footer links and information
+- `validation` - Login validation messages
+- `registerValidation` - Registration validation messages
+- `errors` - Error messages
+
+
+#### **Locale Files Structure**
+```json
+{
+  "common": { "key": "value" },
+  "section": { "key": "value", "subKey": "value" },
+  "validation": { "errorKey": "error message" },
+  "errors": { "errorKey": "error message" }
+}
+```
+
+####  **Language Context**
+```typescript
+// app/contexts/LanguageContext.tsx
+export function useLanguage() {
+  return {
+    locale: 'en' | 'ar',
+    toggleLocale: () => void,
+    setLocale: (locale: Locale) => void
+  };
+}
+```
+
+Features:
+- Persists language preference to localStorage
+- Updates document.dir and document.lang automatically
+- Provides toggle function for easy language switching
+- Available to all components via Context API
+
+####  **Pages & Components with Full Translation**
+
+**Authentication Pages:**
+- `/auth/login` - Login form with validation messages in both languages
+- `/auth/register` - Registration form with comprehensive validation
+- `/auth/verify` - Email verification page with 6-digit code input
+
+**Main Pages:**
+- `/dashboard` - User dashboard with profile information
+- `/` - Home page with all components
+
+**Components:**
+- **Navbar** - Navigation menu with language switcher
+- **Hero** - Product showcase with breadcrumb, color selection, size/material dropdowns
+- **ProductDetails** - Product information section
+- **Reviews** - Product reviews with ratings and comments
+- **SimilarItems** - Related products carousel
+- **Footer** - Footer with links and information
+
+####  **Dynamic Content Examples**
+
+**Product Cards:**
+- Translated product names: `product.product1Name`
+- Translated categories: `similar.productCategoryDresses`
+- Translated color names: `product.colorRed`, `product.colorBlue`, etc.
+
+**Validation Messages:**
+- Email validation: `validation.emailRequired`, `validation.invalidEmail`
+- Password validation: `registerValidation.passwordMin`, `registerValidation.passwordUpper`
+- Custom error messages in Arabic and English
+
+**Dynamic Dates:**
+- Review dates: `reviews.sampleDate1` (e.g., "4 months ago" → "قبل 4 أشهر")
+
+####  **Mobile & Responsive Translation**
+- All translations are fully responsive
+- Works seamlessly on mobile, tablet, and desktop
+- RTL layout adjustments for Arabic on all screen sizes
+- Mobile-optimized text sizes and spacing
+
+####  **Performance Optimizations**
+- Translations are loaded at build time
+- No additional API calls for translations
+- Instant language switching with localStorage
+- Efficient context re-renders only when locale changes
+- Type-safe translation keys with TypeScript
+
+### File Structure
+```
+app/
+├── locales/
+│   ├── en.json          # English translations
+│   └── ar.json          # Arabic translations
+├── i18n/
+│   └── index.ts         # Translation helper function
+├── contexts/
+│   └── LanguageContext.tsx  # Global language state
+├── auth/
+│   ├── login/page.tsx
+│   ├── register/page.tsx
+│   └── verify/page.tsx
+├── dashboard/page.tsx
+├── components/
+│   ├── Navbar/
+│   ├── Hero/
+│   ├── ProductDetails/
+│   ├── Reviews/
+│   ├── SimilarItems/
+│   └── Footer/
+└── ...
+```
+
+### Adding New Translations
+1. Add key-value pair to both `en.json` and `ar.json`
+2. Use in component: `{t('namespace.key', locale)}`
+3. TypeScript will provide autocompletion for valid keys
+
+### Language Persistence
+- User's language preference is saved to localStorage as `language`
+- On page reload, the app restores the user's selected language
+- Default language is English if no preference is set
 
 
 

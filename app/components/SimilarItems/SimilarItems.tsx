@@ -92,7 +92,6 @@ export default function SimilarItems() {
 
   const isRtl = locale === 'ar';
 
-  // Don't reverse products; instead reverse navigation logic for RTL
   const productsToRender = products;
   const maxIndex = Math.max(0, productsToRender.length - itemsPerView);
 

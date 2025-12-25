@@ -21,7 +21,6 @@ export default function ProductDetails() {
 
     const images = [young1, hoodie, hoodie2];
     
-    // صور الـ thumbnails فقط (الهوديز)
     const thumbnailImages = [hoodie, hoodie2];
 
     const colors = [
@@ -109,7 +108,7 @@ export default function ProductDetails() {
                             {thumbnailImages.map((img, index) => (
                                 <button
                                     key={index}
-                                    onClick={() => setCurrentImageIndex(index + 1)} // +1 لأن الهوديز تبدأ من index 1 في المصفوفة الرئيسية
+                                    onClick={() => setCurrentImageIndex(index + 1)} 
                                     className={`flex-1 h-31 sm:h-24 md:h-45.5 bg-gradient-to-b from-gray-100 to-gray-50 rounded-xl md:rounded-2xl overflow-hidden ${currentImageIndex === index + 1 ? 'ring-2 ring-blue-400' : ''
                                         }`}
                                 >

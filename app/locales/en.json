@@ -117,6 +117,26 @@
     "phonePattern": "Phone number must contain only digits",
     "phoneRequired": "Phone number is required"
   },
+  "verify": {
+    "verifyAccount": "Verify Account",
+    "enterVerificationCode": "Enter the verification code",
+    "forTesting": "For testing:",
+    "verificationCode": "Verification Code",
+    "digitsLabel": "digits",
+    "verifyButton": "Verify Account",
+    "verifying": "Verifying...",
+    "resendCode": "Resend verification code",
+    "backToRegister": "Back to Register",
+    "goToLogin": "Go to Login",
+    "invalidCode": "Invalid verification code",
+    "verificationFailed": "Verification failed"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "userName": "User Name",
+    "email": "Email",
+    "logout": "Logout"
+  },
   "errors": {
     "loginFailed": "Login failed. Please check your credentials.",
     "genericError": "An error occurred. Please try again."

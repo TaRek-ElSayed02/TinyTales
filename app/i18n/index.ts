@@ -14,7 +14,6 @@ export type TranslationKey = `${TranslationNamespace}.${string}` | keyof typeof 
 export const t = (key: TranslationKey, locale: Locale = 'en'): string => {
   const translations = locales[locale];
 
-  // Support namespaced keys like 'common.welcome'
   if (typeof key === 'string' && key.includes('.')) {
     const [ns, ...rest] = key.split('.');
     const prop = rest.join('.');
@@ -24,7 +23,6 @@ export const t = (key: TranslationKey, locale: Locale = 'en'): string => {
     }
   }
 
-  // Backwards-compatible: allow passing plain keys like 'welcome'
   if (key in translations.common) {
     return translations.common[key as keyof typeof translations.common];
   }

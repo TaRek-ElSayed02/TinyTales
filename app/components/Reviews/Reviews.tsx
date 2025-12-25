@@ -115,7 +115,7 @@ export default function Reviews() {
               </div>
 
               <p className="mt-3 text-[12px] md:text-[16px] text-gray-600 leading-relaxed">
-                {t(review.commentKey, locale)}
+                {t(review.commentKey as any, locale)}
               </p>
             </div>
           ))}

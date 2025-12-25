@@ -116,6 +116,26 @@
     "phonePattern": "رقم الهاتف يجب أن يحتوي أرقام فقط",
     "phoneRequired": "رقم الهاتف مطلوب"
   },
+  "verify": {
+    "verifyAccount": "التحقق من الحساب",
+    "enterVerificationCode": "أدخل رمز التحقق",
+    "forTesting": "للاختبار:",
+    "verificationCode": "رمز التحقق",
+    "digitsLabel": "أرقام",
+    "verifyButton": "التحقق من الحساب",
+    "verifying": "جاري التحقق...",
+    "resendCode": "إعادة إرسال رمز التحقق",
+    "backToRegister": "العودة إلى التسجيل",
+    "goToLogin": "الذهاب إلى تسجيل الدخول",
+    "invalidCode": "رمز التحقق غير صحيح",
+    "verificationFailed": "فشل التحقق"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "userName": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "logout": "تسجيل الخروج"
+  },
   "errors": {
     "loginFailed": "فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد.",
     "genericError": "حدث خطأ. يرجى المحاولة مرة أخرى."
