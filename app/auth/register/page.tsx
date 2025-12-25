@@ -11,6 +11,8 @@ export default function Register() {
     const router = useRouter();
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const { locale, toggleLocale } = useLanguage();
 
     const formik = useFormik({
@@ -119,16 +121,36 @@ export default function Register() {
                     </div>
 
                     <div>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder={t('common.password', locale)}
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            value={formik.values.password}
-                            className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                placeholder={t('common.password', locale)}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                value={formik.values.password}
+                                className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
+                                dir={locale === 'ar' ? 'rtl' : 'ltr'}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className={`absolute top-1/2 -translate-y-1/2 px-3 text-gray-500 hover:text-gray-700 transition ${
+                                    locale === 'ar' ? 'left-3' : 'right-3'
+                                }`}
+                            >
+                                {showPassword ? (
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                ) : (
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-2.288m5.149-5.038A9.954 9.954 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.079 10.079 0 01-1.563 2.288m-9.32 3.577a3 3 0 114.242-4.243M9.88 9.88l4.242 4.242M12 5v.01M3 3l18 18" />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
                         {formik.touched.password && formik.errors.password && (
                             <p className="text-red-500 text-xs mt-1">
                                 {formik.errors.password}
@@ -137,16 +159,36 @@ export default function Register() {
                     </div>
 
                     <div>
-                        <input
-                            type="password"
-                            name="password_confirmation"
-                            placeholder={t('register.confirmPassword', locale)}
-                            onBlur={formik.handleBlur}
-                            onChange={formik.handleChange}
-                            value={formik.values.password_confirmation}
-                            className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            dir={locale === 'ar' ? 'rtl' : 'ltr'}
-                        />
+                        <div className="relative">
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                name="password_confirmation"
+                                placeholder={t('register.confirmPassword', locale)}
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                value={formik.values.password_confirmation}
+                                className="w-full h-12 px-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12"
+                                dir={locale === 'ar' ? 'rtl' : 'ltr'}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className={`absolute top-1/2 -translate-y-1/2 px-3 text-gray-500 hover:text-gray-700 transition ${
+                                    locale === 'ar' ? 'left-3' : 'right-3'
+                                }`}
+                            >
+                                {showConfirmPassword ? (
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                ) : (
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-2.288m5.149-5.038A9.954 9.954 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.079 10.079 0 01-1.563 2.288m-9.32 3.577a3 3 0 114.242-4.243M9.88 9.88l4.242 4.242M12 5v.01M3 3l18 18" />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
                         {formik.touched.password_confirmation &&
                             formik.errors.password_confirmation && (
                                 <p className="text-red-500 text-xs mt-1">
