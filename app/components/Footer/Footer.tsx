@@ -15,7 +15,7 @@ export default function Footer() {
     const loc = "/loc.png"
 
     return (
-        <div className="relative w-full h-[669px] md:h-[323px] overflow-hidden">
+        <div className="relative w-full h-[auti] md:h-[323px] overflow-hidden ">
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${kid})` }}
@@ -126,7 +126,7 @@ export default function Footer() {
                                     <input
                                         type="email"
                                         placeholder="Email address"
-                                        className="flex-1 px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
+                                        className="w-[50%] px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
                                     />
                                     <button className="px-9 py-3 bg-[#BE968E] hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
                                         Send
