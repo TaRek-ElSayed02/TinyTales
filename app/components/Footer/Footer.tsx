@@ -1,7 +1,10 @@
-
+"use client";
 import React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext';
+import { t } from '../../i18n';
 
 export default function Footer() {
+    const { locale } = useLanguage();
     const kid = "/kids-photography.png"
     const lightlogo = "/lightlogo.png"
     const linkedin = "/linkedin.png"
@@ -29,12 +32,12 @@ export default function Footer() {
                         <div className="mb-6">
                             <img src={lightlogo} alt="TinyTales" className="w-16 mb-3" />
                             <p className="text-xs text-gray-300 leading-relaxed">
-                                Lorem ipsum dolor sit amet, consectuetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore sit amet, consectuetur adipiscing elit, sed diam nonummy
+                                {t('footer.description', locale)}
                             </p>
                         </div>
 
                         <div className="mb-6">
-                            <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
+                            <h3 className="text-lg font-semibold mb-3">{t('footer.contactUs', locale)}</h3>
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
                                     <span className="text-base"><img src={phone} alt="" /></span>
@@ -52,32 +55,32 @@ export default function Footer() {
                         </div>
 
                         <div className="mb-6">
-                            <h3 className="text-lg font-semibold mb-3">Let Us Help</h3>
+                            <h3 className="text-lg font-semibold mb-3">{t('footer.letUsHelp', locale)}</h3>
                             <ul className="space-y-1.5 text-xs text-gray-300">
-                                <li>My Account</li>
-                                <li>FAQs</li>
-                                <li>Contact & Support</li>
-                                <li>Categories</li>
-                                <li>All Products</li>
+                                <li>{t('footer.myAccount', locale)}</li>
+                                <li>{t('navbar.faqs', locale)}</li>
+                                <li>{t('footer.contactUs', locale)}</li>
+                                <li>{t('footer.categories', locale)}</li>
+                                <li>{t('footer.allProducts', locale)}</li>
                             </ul>
                         </div>
 
                         <div className="mb-6">
-                            <h3 className="text-lg font-semibold mb-3">Send Email</h3>
-                            <div className="flex gap-2 mb-6 bg-white rounded-lg p-2">
+                            <h3 className="text-lg font-semibold mb-3">{t('footer.sendEmail', locale)}</h3>
+                            <div className="flex gap-2  mb-6 bg-white rounded-lg p-2">
                                 <input
                                     type="email"
-                                    placeholder="Email address"
+                                    placeholder={t('footer.emailPlaceholder', locale)}
                                     className="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
                                 />
                                 <button className=" px-9 py-3 bg-[#BE968E] hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
-                                    Send
+                                    {t('footer.send', locale)}
                                 </button>
                             </div>
                         </div>
 
                         <div>
-                            <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+                            <h3 className="text-lg font-semibold mb-3">{t('footer.followUs', locale)}</h3>
                             <div className="flex gap-3">
                                 <img src={face} alt="Facebook" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                 <img src={x} alt="Twitter" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
@@ -95,45 +98,45 @@ export default function Footer() {
                             <div>
                                 <img src={lightlogo} alt="TinyTales" className="w-20 mb-4" />
                                 <p className="text-[14px] text-gray-300 leading-relaxed">
-                                    Ipsam in eos qui consequatur ab cum inaudilas.Soluta dolor quae ipsam in eos qui consequatur ab .Soluta dolor quae ipsam in eos quconsequatur ab cum maxime.Soluta dolor quae
+                                    {t('footer.description', locale)}
                                 </p>
                             </div>
 
                             <div>
-                                <h3 className="text-[24px] font-semibold mb-4">Let Us Help</h3>
-                                <ul className="space-y-2 text-[16px] text-gray-300">
-                                    <li className="cursor-pointer hover:text-white transition-colors">My Account</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">FAQs</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">Categories</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">All Products</li>
-                                </ul>
+                                    <h3 className="text-[24px] font-semibold mb-4">{t('footer.letUsHelp', locale)}</h3>
+                                    <ul className="space-y-2 text-[16px] text-gray-300">
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.myAccount', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('navbar.faqs', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.categories', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.allProducts', locale)}</li>
+                                    </ul>
                             </div>
 
                             <div>
-                                <h3 className="text-[24px] font-semibold mb-4">Policies</h3>
-                                <ul className="space-y-2 text-[16px] text-gray-300  ">
-                                    <li className="cursor-pointer hover:text-white transition-colors">Refund Policy</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">About Us</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">Cancellation Policy</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">Terms and Conditions</li>
-                                    <li className="cursor-pointer hover:text-white transition-colors">Privacy Policy</li>
-                                </ul>
+                                <h3 className="text-[24px] font-semibold mb-4">{t('footer.policies', locale)}</h3>
+                                    <ul className="space-y-2 text-[16px] text-gray-300  ">
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.refundPolicy', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('navbar.aboutUs', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.cancellationPolicy', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.terms', locale)}</li>
+                                        <li className="cursor-pointer hover:text-white transition-colors">{t('footer.privacy', locale)}</li>
+                                    </ul>
                             </div>
 
                             <div>
-                                <h3 className="text-lg font-semibold mb-4">Send Email</h3>
+                                <h3 className="text-lg font-semibold mb-3">{t('footer.sendEmail', locale)}</h3>
                                 <div className="flex gap-2 mb-6 bg-white rounded-lg p-2 ">
                                     <input
                                         type="email"
-                                        placeholder="Email address"
-                                        className="w-[50%] px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
+                                        placeholder={t('footer.emailPlaceholder', locale)}
+                                        className="w-full px-3 py-2 rounded-lg bg-white text-gray-800 text-xs outline-none"
                                     />
                                     <button className="px-9 py-3 bg-[#BE968E] hover:bg-rose-400 rounded-lg text-white text-xs font-medium transition-colors">
-                                        Send
+                                        {t('footer.send', locale)}
                                     </button>
                                 </div>
 
-                                <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
+                                <h3 className="text-lg font-semibold mb-3">{t('footer.followUs', locale)}</h3>
                                 <div className="flex gap-3">
                                     <img src={face} alt="Facebook" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />
                                     <img src={x} alt="Twitter" className="w-7 h-7 cursor-pointer hover:opacity-80 transition-opacity" />

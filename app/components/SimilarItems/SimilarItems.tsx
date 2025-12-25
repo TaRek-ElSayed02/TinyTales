@@ -1,12 +1,14 @@
 'use client';
 import React, { useState, useEffect } from "react";
+import { useLanguage } from '../../contexts/LanguageContext';
+import { t } from '../../i18n';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const products = [
   {
     id: 1,
-    name: "J.VER Women's Dress Shirts Solid Long Sleeve Stretch Wrinkle-Free With Yello",
-    category: "Dresses",
+    nameKey: 'similar.product1Name',
+    categoryKey: 'similar.productCategoryDresses',
     price: 900,
     oldPrice: 1300,
     rating: 4.5,
@@ -16,8 +18,8 @@ const products = [
   },
   {
     id: 2,
-    name: "J.VER Women's Dress Shirts Solid Long Sleeve Stretch Wrinkle-Free With Yello",
-    category: "Dresses",
+    nameKey: 'similar.product2Name',
+    categoryKey: 'similar.productCategoryDresses',
     price: 900,
     oldPrice: 1300,
     rating: 4.5,
@@ -27,8 +29,8 @@ const products = [
   },
   {
     id: 3,
-    name: "J.VER Women's Dress Shirts Solid Long Sleeve Stretch Wrinkle-Free With Yello",
-    category: "Dresses",
+    nameKey: 'similar.product3Name',
+    categoryKey: 'similar.productCategoryDresses',
     price: 900,
     oldPrice: null,
     rating: 4.5,
@@ -38,8 +40,8 @@ const products = [
   },
   {
     id: 4,
-    name: "J.VER Women's Dress Shirts Solid Long Sleeve Stretch Wrinkle-Free With Yello",
-    category: "Dresses",
+    nameKey: 'similar.product4Name',
+    categoryKey: 'similar.productCategoryDresses',
     price: 900,
     oldPrice: null,
     rating: 4.5,
@@ -49,8 +51,8 @@ const products = [
   },
   {
     id: 5,
-    name: "J.VER Women's Dress Shirts Solid Long Sleeve Stretch Wrinkle-Free With Yello",
-    category: "Dresses",
+    nameKey: 'similar.product5Name',
+    categoryKey: 'similar.productCategoryDresses',
     price: 900,
     oldPrice: null,
     rating: 4.5,
@@ -61,6 +63,7 @@ const products = [
 ];
 
 export default function SimilarItems() {
+  const { locale } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [favorites, setFavorites] = useState(new Set());
   const [cart, setCart] = useState(new Set());
@@ -73,8 +76,8 @@ export default function SimilarItems() {
 
   const getItemsPerView = () => {
     if (typeof window === 'undefined') return 4;
-    if (window.innerWidth < 640) return 3; 
-    if (window.innerWidth < 768) return 3; 
+    if (window.innerWidth < 640) return 2; 
+    if (window.innerWidth < 768) return 2; 
     if (window.innerWidth < 1024) return 3;
     return 4; 
   };
@@ -87,14 +90,26 @@ export default function SimilarItems() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const maxIndex = Math.max(0, products.length - itemsPerView);
+  const isRtl = locale === 'ar';
+
+  // Don't reverse products; instead reverse navigation logic for RTL
+  const productsToRender = products;
+  const maxIndex = Math.max(0, productsToRender.length - itemsPerView);
 
   const handlePrev = () => {
-    setCurrentIndex(prev => Math.max(0, prev - 1));
+    if (isRtl) {
+      setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+    } else {
+      setCurrentIndex(prev => Math.max(0, prev - 1));
+    }
   };
 
   const handleNext = () => {
-    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+    if (isRtl) {
+      setCurrentIndex(prev => Math.max(0, prev - 1));
+    } else {
+      setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+    }
   };
 
   const toggleFavorite = (id:number) => {
@@ -131,9 +146,9 @@ export default function SimilarItems() {
       <div className="mb-6">
         <h3 className="text-[16px] md:text-[24px] font-semibold mb-6">
           <span className="underline decoration-[#BE968E] underline-offset-8 decoration-4">
-            Sim
+            {t('similar.title', locale).slice(0,3)}
           </span>
-          ilar Items
+          {t('similar.title', locale).slice(3)}
         </h3>
       </div>
 
@@ -142,10 +157,12 @@ export default function SimilarItems() {
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
+              transform: isRtl 
+                ? `translateX(${currentIndex * (100 / itemsPerView)}%)`
+                : `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
             }}
           >
-            {products.map((product) => (
+            {productsToRender.map((product) => (
               <div
                 key={product.id}
                 className="flex-shrink-0 pe-45 sm:px-2"
@@ -158,7 +175,7 @@ export default function SimilarItems() {
                       <div className="flex justify-between items-start">
                         {product.oldPrice ? (
                           <div className="text-[#BE968E] border border-[#BE968E] rounded-lg text-[10px] sm:text-xs font-semibold px-1.5 sm:px-2 py-0.5 sm:py-1">
-                            {calculateDiscount(product.price, product.oldPrice)}% OFF
+                            {calculateDiscount(product.price, product.oldPrice)}% {t('similar.off', locale)}
                           </div>
                         ) : (
                           <div></div>
@@ -194,7 +211,7 @@ export default function SimilarItems() {
                       >
                         <img
                           src={product.image}
-                          alt={product.name}
+                          alt={product.nameKey}
                           className="w-full h-full object-contain px-2 sm:px-4"
                         />
                       </div>
@@ -204,7 +221,7 @@ export default function SimilarItems() {
 
                   <div className="p-2 sm:p-3">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-[10px] sm:text-xs text-gray-500">{product.category}</p>
+                      <p className="text-[10px] sm:text-xs text-gray-500">{t(product.categoryKey as any, locale)}</p>
                       <div className="flex items-center gap-0.5 sm:gap-1">
                         <span className="text-yellow-400 text-sm">
                           <img src={star} alt="Star rating" className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -215,7 +232,7 @@ export default function SimilarItems() {
                     </div>
 
                     <h3 className="text-[10px] sm:text-xs font-medium text-gray-900 mb-2 line-clamp-2" style={{ minHeight: '1.5rem' }}>
-                      {product.name}
+                      {t(product.nameKey as any, locale)}
                     </h3>
 
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
@@ -252,12 +269,12 @@ export default function SimilarItems() {
           </div>
         </div>
 
-        {products.length > itemsPerView && (
+        {productsToRender.length > itemsPerView && (
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className={`p-3 rounded-full transition-all ${currentIndex === 0
+              onClick={isRtl ? handleNext : handlePrev}
+              disabled={isRtl ? currentIndex === 0 : currentIndex === 0}
+              className={`p-3 rounded-full transition-all ${(isRtl ? currentIndex === 0 : currentIndex === 0)
                 ? 'bg-gray-200 cursor-not-allowed opacity-50'
                 : 'bg-[#BE968E] hover:bg-[#A87F78] text-white'
                 }`}
@@ -266,9 +283,9 @@ export default function SimilarItems() {
             </button>
 
             <button
-              onClick={handleNext}
-              disabled={currentIndex === maxIndex}
-              className={`p-3 rounded-full transition-all ${currentIndex === maxIndex
+              onClick={isRtl ? handlePrev : handleNext}
+              disabled={isRtl ? currentIndex === maxIndex : currentIndex === maxIndex}
+              className={`p-3 rounded-full transition-all ${(isRtl ? currentIndex === maxIndex : currentIndex === maxIndex)
                 ? 'bg-gray-200 cursor-not-allowed opacity-50'
                 : 'bg-[#BE968E] hover:bg-[#A87F78] text-white'
                 }`}

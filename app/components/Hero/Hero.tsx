@@ -1,5 +1,7 @@
 'use client';
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { t, locales } from '../../i18n';
 
 export default function ProductDetails() {
     const arrowdown = "/arrowdown.png";
@@ -23,11 +25,11 @@ export default function ProductDetails() {
     const thumbnailImages = [hoodie, hoodie2];
 
     const colors = [
-        { name: 'red', code: '#EF4444' },
-        { name: 'blue', code: '#93C5FD' },
-        { name: 'olive', code: '#84817A' },
-        { name: 'lightblue', code: '#BFDBFE' },
-        { name: 'gray', code: '#6B7280' }
+        { name: 'red', code: '#EF4444', nameKey: 'product.colorRed' },
+        { name: 'blue', code: '#93C5FD', nameKey: 'product.colorBlue' },
+        { name: 'olive', code: '#84817A', nameKey: 'product.colorOlive' },
+        { name: 'lightblue', code: '#BFDBFE', nameKey: 'product.colorLightblue' },
+        { name: 'gray', code: '#6B7280', nameKey: 'product.colorGray' }
     ];
 
     const handlePrevImage = () => {
@@ -41,6 +43,11 @@ export default function ProductDetails() {
     const increaseQuantity = () => setQuantity(prev => prev + 1);
     const decreaseQuantity = () => setQuantity(prev => prev > 1 ? prev - 1 : 1);
 
+    const { locale } = useLanguage();
+
+    const materialOptions: string[] = (locales as any)[locale]?.product?.materialOptions || ['Cotton','Polyester','Blend'];
+    const sizeOptions: string[] = (locales as any)[locale]?.product?.sizeOptions || ['2Xl','XL','L','M','S'];
+
     return (
         <div className=" bg-white md:p-8 p-3 relative">
             <img 
@@ -48,13 +55,13 @@ export default function ProductDetails() {
                 alt="decoration" 
                 className="absolute left-4 md:-bottom-3 -bottom-17 w-16 h-16 md:w-20 md:h-14 opacity-50 z-10"
             />
-            <div className="px-4 py-4 md:px-8 lg:px-8 mb-4 md:mb-8 rounded-xl" style={{ backgroundColor: '#ECECEC66' }}>
-                <div className="flex items-center gap-2 text-sm md:text-base">
-                    <span className="text-[#020202]">Home</span>
-                    <span className="text-[#020202]"><img src={arrow} alt="" className="w-3 h-3" /></span>
-                    <span className="text-[#020202]">Our Category</span>
-                    <span className="text-[#020202]"><img src={arrow} alt="" className="w-3 h-3" /></span>
-                    <span className="text-[#8A8A8A]">T-Shirt</span>
+                <div className="px-4 py-4 md:px-8 lg:px-8 mb-4 md:mb-8 rounded-xl" style={{ backgroundColor: '#ECECEC66' }}>
+                <div className={`flex items-center gap-2 text-sm md:text-base ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+                    <span className="text-[#020202]">{t('product.breadcrumbHome', locale)}</span>
+                    <span className="text-[#020202]"><img src={arrow} alt="" className="w-3 h-3" style={{ transform: locale === 'ar' ? 'scaleX(-1)' : 'none' }} /></span>
+                    <span className="text-[#020202]">{t('product.breadcrumbCategory', locale)}</span>
+                    <span className="text-[#020202]"><img src={arrow} alt="" className="w-3 h-3" style={{ transform: locale === 'ar' ? 'scaleX(-1)' : 'none' }} /></span>
+                    <span className="text-[#8A8A8A]">{t('product.breadcrumbItem', locale)}</span>
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
@@ -122,8 +129,8 @@ export default function ProductDetails() {
                     <div className="w-full lg:w-1/2 mt-6 lg:mt-0 flex flex-col">
                         <div className="flex items-start justify-between mb-4 md:mb-6">
                             <span className="px-5 md:px-4 py-2.5 md:py-1.5 bg-white border border-[#BE968E] rounded-full text-[14px] md:text-sm text-[#BE968E] md:font-medium font-[14px]">
-                                T-Shirt
-                            </span>
+                                    {t('product.breadcrumbItem', locale)}
+                                </span>
                             <div className="flex gap-2 md:gap-3">
                                 <button className="w-[48px] h-[48px] md:w-11 md:h-11 bg-white border border-gray-200 rounded-xl flex items-center justify-center hover:bg-gray-50 transition">
                                     <img src={bagadd} alt="Shopping Bag" className="w-8 h-8 md:w-5 md:h-5" />
@@ -135,30 +142,30 @@ export default function ProductDetails() {
                         </div>
 
                         <h1 className="text-[16px] sm:text-xl md:text-2xl font-500 text-gray-900 mb-3 md:mb-4 leading-tight">
-                            J.VER Man Shirts Solid Long Sleeve Stretch Wrinkle-Free With Blue
+                            {t('product.title', locale)}
                         </h1>
 
                         <div className="flex items-baseline gap-2 md:gap-3 mb-1">
                             <span className="text-[20px] sm:text-3xl md:text-[20px] font-bold text-gray-900">$300.00</span>
                             <span className="text-[16px] sm:text-xl md:text-[16px] text-gray-400 line-through">$360.00</span>
                         </div>
-                        <p className="text-xs md:text-[12px] text-gray-500 mb-4 md:mb-6">This price is exclusive of taxes.</p>
+                        <p className="text-xs md:text-[12px] text-gray-500 mb-4 md:mb-6">{t('product.priceNote', locale)}</p>
 
                         <p className="text-[12px] md:text-[14px] text-gray-600 mb-6 md:mb-8 leading-relaxed">
-                            Lorem ipsum dolor sit, consectetuer adipiscing elit, sed diam nonummy Lorem ipsum dolor sit amet, diam nonummy
+                            {t('product.description', locale)}
                         </p>
 
                         <div className="mb-4 md:mb-6">
                             <div className="relative">
                                 <select className="md:w-[50%] w-full px-3 md:px-4 py-2.5 md:py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 appearance-none text-gray-900 text-sm md:text-base">
-                                    <option>Cotton</option>
-                                    <option>Polyester</option>
-                                    <option>Blend</option>
+                                    {materialOptions.map((opt) => (
+                                        <option key={opt}>{opt}</option>
+                                    ))}
                                 </select>
-                                <label className="absolute -top-2.5 left-3 px-2 bg-white text-xs font-medium text-gray-700">
-                                    Type
+                                <label className={`absolute -top-2.5 px-2 bg-white text-xs font-medium text-gray-700 ${locale === 'ar' ? 'right-3' : 'left-3'}`}>
+                                    {t('product.type', locale)}
                                 </label>
-                                <div className="absolute right-3 md:right-80 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
+                                <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs ${locale === 'ar' ? 'left-3 md:left-80' : 'right-3 md:right-80'}`}>
                                     <img src={arrowdown} alt="" />
                                 </div>
                             </div>
@@ -167,23 +174,21 @@ export default function ProductDetails() {
                         <div className="mb-6 md:mb-8">
                             <div className="relative">
                                 <select className="md:w-[50%] w-full px-3 md:px-4 py-2.5 md:py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 appearance-none text-gray-900 text-sm md:text-base">
-                                    <option>2Xl</option>
-                                    <option>XL</option>
-                                    <option>L</option>
-                                    <option>M</option>
-                                    <option>S</option>
+                                    {sizeOptions.map((opt) => (
+                                        <option key={opt}>{opt}</option>
+                                    ))}
                                 </select>
-                                <label className="absolute -top-2.5 left-3 px-2 bg-white text-xs font-medium text-gray-700">
-                                    Size
+                                <label className={`absolute -top-2.5 px-2 bg-white text-xs font-medium text-gray-700 ${locale === 'ar' ? 'right-3' : 'left-3'}`}>
+                                    {t('product.size', locale)}
                                 </label>
-                                <div className="absolute right-3 md:right-80 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
+                                <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs ${locale === 'ar' ? 'left-3 md:left-80' : 'right-3 md:right-80'}`}>
                                     <img src={arrowdown} alt="" />
                                 </div>
                             </div>
                         </div>
 
                         <div className="mb-6 md:mb-8">
-                            <label className="block text-[20px] font-semibold text-gray-900 mb-3 md:mb-4">Colors</label>
+                            <label className="block text-[20px] font-semibold text-gray-900 mb-3 md:mb-4">{t('product.colors', locale)}</label>
                             <div className="flex gap-5 md:gap-6">
                                 {colors.map((color) => (
                                     <div key={color.name} className="flex flex-col items-center">
@@ -196,7 +201,7 @@ export default function ProductDetails() {
                                         </button>
                                         {selectedColor === color.name && (
                                             <span className="mt-4 text-xs text-gray-700 whitespace-nowrap font-medium">
-                                                {color.name.charAt(0).toUpperCase() + color.name.slice(1)}
+                                                {t(color.nameKey as any, locale)}
                                             </span>
                                         )}
                                     </div>
@@ -206,8 +211,8 @@ export default function ProductDetails() {
 
                         <div className="mb-3 md:mb-4">
                             <div className="flex items-center gap-2 mb-3">
-                                <span className="text-[20px] text-[#020202]">Quantity</span>
-                                <span className="text-[16px] text-[#8A8A8A]">($300.00 for Piece)</span>
+                                <span className="text-[20px] text-[#020202]">{t('product.quantity', locale)}</span>
+                                <span className="text-[16px] text-[#8A8A8A]">{t('product.forPiece', locale)}</span>
                             </div>
                         </div>
 
@@ -217,7 +222,7 @@ export default function ProductDetails() {
                                     <div className="flex items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl flex-1 sm:flex-none">
                                         <button
                                             onClick={decreaseQuantity}
-                                            className="bg-white px-4 py-2.5 ms-2 rounded-xl text-gray-600 hover:bg-gray-50 text-lg"
+                                            className="bg-white px-4 py-1.5 ms-2 rounded-xl text-gray-600 hover:bg-gray-50 text-lg"
                                         >
                                             −
                                         </button>
@@ -226,7 +231,7 @@ export default function ProductDetails() {
                                         </span>
                                         <button
                                             onClick={increaseQuantity}
-                                            className="bg-white px-4 py-2.5 me-2 rounded-xl text-gray-600 hover:bg-gray-50 text-lg"
+                                            className="bg-white px-4 py-1.5 me-2 rounded-xl text-gray-600 hover:bg-gray-50 text-lg"
                                         >
                                             +
                                         </button>
@@ -243,7 +248,7 @@ export default function ProductDetails() {
                                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#A87E76'}
                                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#BE968E'}
                                 >
-                                    <span>Add To Cart</span>
+                                    <span>{t('product.addToCart', locale)}</span>
                                     <img src={shoppingbag2} alt="Cart" className="w-4 h-4 md:w-5 md:h-5 brightness-0 invert" />
                                 </button>
                             </div>

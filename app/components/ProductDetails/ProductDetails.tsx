@@ -1,5 +1,8 @@
 
+'use client';
 import React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext';
+import { t } from '../../i18n';
 
 declare module 'react' {
     interface CSSProperties {
@@ -9,6 +12,7 @@ declare module 'react' {
 }
 
 export default function ProductDetails() {
+    const { locale } = useLanguage();
     const background = "/background.jpeg";
     const verticalmobile = "/3dverticalmobile.png";
 
@@ -26,7 +30,7 @@ export default function ProductDetails() {
                 <img
                    
                     src={background}
-                    alt="Background for Product Details"
+                    alt={t('product.title', locale)}
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
@@ -42,7 +46,7 @@ export default function ProductDetails() {
                                     WebkitTextStroke: '1px rgba(0, 0, 0, 0.05)',
                                     textStroke: '1px rgba(0, 0, 0, 0.05)'
                                 }}>
-                                Product Details
+                                {t('product.sectionHeading', locale)}
                             </h2>
                         </div>
 
@@ -54,7 +58,7 @@ export default function ProductDetails() {
                                 width: '247px',
                                 lineHeight: '48px'
                             }}>
-                            Product Details
+                            {t('product.sectionHeading', locale)}
                         </h1>
                     </div>
                 </div>
@@ -63,7 +67,7 @@ export default function ProductDetails() {
             <div className='relative w-full h-[193px] overflow-hidden block md:hidden'>
                 <img
                     src={verticalmobile}
-                    alt="Mobile background"
+                    alt={t('product.breadcrumbItem', locale)}
                     className="absolute inset-0 w-full h-full object-cover"
                 />
 
@@ -79,7 +83,7 @@ export default function ProductDetails() {
                                     WebkitTextStroke: '1px rgba(0, 0, 0, 0.05)',
                                     textStroke: '1px rgba(0, 0, 0, 0.05)'
                                 }}>
-                                T-shirt
+                                {t('product.breadcrumbItem', locale)}
                             </h2>
                         </div>
 
@@ -91,7 +95,7 @@ export default function ProductDetails() {
                                 width: '71px',
                                 lineHeight: '30px'
                             }}>
-                            T-shirt
+                            {t('product.breadcrumbItem', locale)}
                         </h1>
                     </div>
                 </div>

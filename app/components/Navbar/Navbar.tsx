@@ -1,8 +1,11 @@
 'use client';
 import React, { useState } from 'react'
+import { useLanguage } from '../../contexts/LanguageContext';
+import { t } from '../../i18n';
 
 export default function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const { locale, toggleLocale } = useLanguage();
 
     const logo = "/logo.png";
     const homevector = "homevector.png";
@@ -44,27 +47,27 @@ export default function Navbar() {
                         <div className='hidden lg:flex items-center gap-8'>
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={homevector} className="w-5 h-5" alt="Home" />
-                                <p className='text-[#8A8A8A] m-0 navbar-text'>Home</p>
+                                <p className='text-[#8A8A8A] m-0 navbar-text'>{t('navbar.home', locale)}</p>
                             </div>
 
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={apps} className="w-5 h-5" alt="Category" />
-                                <p className='text-[#8A8A8A] m-0 navbar-text'>Our Category</p>
+                                <p className='text-[#8A8A8A] m-0 navbar-text'>{t('navbar.ourCategory', locale)}</p>
                             </div>
 
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={chatinformation} className="w-5 h-5" alt="About" />
-                                <p className='text-[#8A8A8A] m-0 navbar-text'>About Us</p>
+                                <p className='text-[#8A8A8A] m-0 navbar-text'>{t('navbar.aboutUs', locale)}</p>
                             </div>
 
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={idcard} className="w-5 h-5" alt="Contact" />
-                                <p className='text-[#8A8A8A] m-0 navbar-text'>Contact Us</p>
+                                <p className='text-[#8A8A8A] m-0 navbar-text'>{t('navbar.contactUs', locale)}</p>
                             </div>
 
                             <div className='flex items-center gap-1 cursor-pointer'>
                                 <img src={interactive} className="w-5 h-5" alt="FAQs" />
-                                <p className='text-[#8A8A8A] m-0 navbar-text'>FAQs</p>
+                                <p className='text-[#8A8A8A] m-0 navbar-text'>{t('navbar.faqs', locale)}</p>
                             </div>
                         </div>
                     </div>
@@ -76,8 +79,10 @@ export default function Navbar() {
                             <img src={love} className="w-6 h-6 cursor-pointer" alt="Favorites" />
 
                             <div className='flex items-center gap-1 cursor-pointer'>
-                                <span className='text-gray-700 navbar-text'>EN</span>
-                                <img src={mingcutedown} className="w-4 h-4" alt="Language" />
+                                <button onClick={toggleLocale} className='flex items-center gap-1'>
+                                    <span className='text-gray-700 navbar-text'>{locale === 'en' ? t('common.switchToArabic', locale) : t('common.switchToEnglish', locale)}</span>
+                                    <img src={mingcutedown} className="w-4 h-4" alt="Language" />
+                                </button>
                             </div>
 
                             <div className='flex items-center gap-1 cursor-pointer'>
@@ -123,55 +128,56 @@ export default function Navbar() {
                     <div className='flex flex-col gap-6'>
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={homevector} className="w-5 h-5" alt="Home" />
-                            <p className='text-gray-700 m-0 navbar-text'>Home</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.home', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={apps} className="w-5 h-5" alt="Category" />
-                            <p className='text-gray-700 m-0 navbar-text'>Our Category</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.ourCategory', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={chatinformation} className="w-5 h-5" alt="About" />
-                            <p className='text-gray-700 m-0 navbar-text'>About Us</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.aboutUs', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={idcard} className="w-5 h-5" alt="Contact" />
-                            <p className='text-gray-700 m-0 navbar-text'>Contact Us</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.contactUs', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={interactive} className="w-5 h-5" alt="FAQs" />
-                            <p className='text-gray-700 m-0 navbar-text'>FAQs</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.faqs', locale)}</p>
                         </div>
 
                         <hr className='my-4' />
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={shoppingbag} className="w-6 h-6" alt="Shopping Bag" />
-                            <p className='text-gray-700 m-0 navbar-text'>Shopping Bag</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.shoppingBag', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={notification} className="w-6 h-6" alt="Notifications" />
-                            <p className='text-gray-700 m-0 navbar-text'>Notifications</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.notifications', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={love} className="w-6 h-6" alt="Favorites" />
-                            <p className='text-gray-700 m-0 navbar-text'>Favorites</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.favorites', locale)}</p>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
-                            <span className='text-gray-700 navbar-text'>EN</span>
-                            <img src={mingcutedown} className="w-4 h-4" alt="Language" />
-                            <p className='text-gray-700 m-0 navbar-text'>Language</p>
+                            <button onClick={toggleLocale} className='flex items-center gap-2'>
+                                <span className='text-gray-700 navbar-text'>{locale === 'en' ? t('common.switchToArabic', locale) : t('common.switchToEnglish', locale)}</span>
+                                <img src={mingcutedown} className="w-4 h-4" alt="Language" />
+                            </button>
                         </div>
 
                         <div className='flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors'>
                             <img src={user} className="w-6 h-6" alt="User" />
-                            <p className='text-gray-700 m-0 navbar-text'>Account</p>
+                            <p className='text-gray-700 m-0 navbar-text'>{t('navbar.account', locale)}</p>
                         </div>
                     </div>
                 </div>
